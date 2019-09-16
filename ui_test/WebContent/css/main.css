@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css?family=Bangers|Crimson+Pro|Do+Hyeon|Nanum+Gothic|Nanum+Pen+Script|Noto+Sans+KR|Orbitron|Ubuntu&display=swap')
+	;
+
+@import
+	url('https://fonts.googleapis.com/css?family=Monda&display=swap');
+
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	background-color: #ffffcc;
+	opacity: 0.99;
+}
+
+#left h2 {
+	font-family: 'Monda', sans-serif;
+	font-size: 40pt;
+}
+
+ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+ul li {
+	margin: 0;
+	padding: 20px;
+	text-align: left;
+}
+
+ul li a {
+	font-family: 'Do Hyeon', sans-serif;
+	text-decoration: none;
+	color: black;
+	font-size: 20pt;
+}
+
+ul li:hover {
+	background-color: #4aa5ff;
+}
+
+.dropbox {
+	position: relative;
+}
+
+.dropmenu {
+	visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 300px;
+	background-color: #ffe680;
+	width: 200px;
+	z-index: 100;
+	box-shadow: 2px 2px 2px gray;
+}
+
+.dropmenu span {
+	display: block;
+	margin: 0;
+	text-align: center;
+	padding: 10px;
+}
+
+.dropmenu span a {
+	font-size: 18pt;
+}
+
+.dropbox:hover>.dropmenu {
+	visibility: visible;
+}
+
+.dropmenu span:hover {
+	background-color: #99ffff;
+}
+
+section {
+	width: 1500px;
+	height: 100%;
+	margin: 0;
+}
+
+#left {
+	background-color: #ffcc00;
+	float: left;
+	height: 100%;
+	width: 300px;
+	text-align: center;
+}
+
+#center {
+	float: left;
+	height: 100%;
+	width: 1200px;
+	max-width: 80%;
+	text-align: center;
+	background-color: rgba( 255, 255, 255, 0 );
+	
+}
+
+#bg {
+	position: absolute;
+	clear: both;
+	bottom: 0;
+	right: 0;
+	width: 200px;
+	z-index: -10;
+}
+
+.btn {
+	background-color: white;
+	border: 2px solid #4aa5ff;
+	color: black;
+	padding: 20px 30px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 20pt;
+	border-radius: 10pt;
+}
+
+.btn:hover {
+	background-color: #4aa5ff;
+	color: white;
+}

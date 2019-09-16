@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SangSang</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/main.css">
+<style type="text/css">
+
+#board{
+	background-color:#ff9900; 
+}
+
+#center span{
+	float: left;
+	margin: 30px;
+	padding: 10px;
+	border: 2px solid black;
+	text-align: center;
+}
+
+</style>
+<script type="text/javascript">
+$(()=>{
+	$('.imgs').each(function(index,item){
+		$(this).attr('src','img/ss0'+index+'.jpg');
+		$(this).attr('width','200');
+	});
+	
+});
+</script>
+</head>
+<body>
+<section>
+<aside id="left">
+<h2>SangSang</h2>
+	<ul>
+		<li  id="home"><a href="main.html">홈</a></li>
+		<li  class="dropbox" id="intro">
+		<a href="#">회사 소개</a>
+		<span class="dropmenu">
+			<span><a href="intro.html">SangSang</a></span>
+			<span><a href="state.html">부서 현황</a></span>
+			<span><a href="location.html">회사 위치</a></span>
+		</span>
+		</li>
+		<li  id="emp_i"><a href="emp_info.html">사원 정보</a></li>
+		<li class="dropbox"  id="board">
+			<a href="#">게시판</a>
+			<span class="dropmenu">
+			<span><a href="photo_board.html">사진 게시판</a></span>
+			<span><a href="free_board.html">자유 게시판</a></span>
+			</span>
+		</li>
+	</ul>
+</aside>
+<aside id="center">
+<div>
+<span><img class="imgs"></span>
+<span><img class="imgs"></span>
+<span><img class="imgs"></span>
+<span><img class="imgs"></span>
+<span><img class="imgs"></span>
+<span><img class="imgs"></span>
+</div>
+</aside>
+<img src="img/pngfind.com-lisa-png-1438388.png" id="bg">
+</section>
+</body>
+</html>

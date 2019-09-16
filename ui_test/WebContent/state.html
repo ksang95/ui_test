@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SangSang</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/table.css">
+<style type="text/css">
+#intro {
+	background-color: #ff9900;
+}
+
+
+
+#center > div {
+	margin-top: 100px;
+}
+
+#result{
+	text-align: center;
+}
+
+
+td{
+	font-family: 'Jua', sans-serif;
+}
+
+</style>
+<script type="text/javascript">
+let log=console.log;
+$(function(){  
+	 $('#btn1').click( function(){   
+		 $.ajax({
+			 url:'all_dept.jsp',
+			 dataType:'json',
+			 success:function(data){
+				 display(data);
+			 },
+			 error:function(error){
+				 alert("error "+error.name);
+			 }
+		 });  
+		 
+		 
+	 });
+	 $('#btn2').click( function(){
+		 $.ajax({
+			 url:'all_dept.jsp',
+			 dataType:'json',
+			 success:function(data){
+				 let xdata=[];
+				 data.forEach((i)=>{
+					 xdata.push([i.dname,parseInt(i.count)]);
+				 });
+				 log(xdata);
+				 chart(xdata);
+			 },
+			 error:function(error){
+				 alert("error "+error.name);
+			 }
+		 }); 
+	});
+	 
+});   
+function display(data){	
+	 let tag = "<table class='tablea'>";
+	 tag += "<tr><th>부서</th><th>직원 수</th> <th>평균 연봉</th></tr> ";
+	 
+	 $(data).each((i,item)=>{
+		 tag += "<tr><td>";
+	     tag += item.dname+"</td><td>"+item.count+"</td><td>"+item.sal;
+	     tag += "</tr></td>";
+	 });
+	 
+	 tag += "</table>";
+	 
+	 $('#result').html(tag);
+}
+
+function chart(xdata){
+Highcharts.chart('result', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: 0,
+        plotShadow: false
+    },
+    title: {
+        text: 'SangSang<br>Emps in Depts<br>2019',
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 60
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white'
+                }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '75%'],
+            size: '110%'
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: 'proportion',
+        innerSize: '50%',
+        data: xdata
+    }]
+     
+});
+}
+
+</script>
+</head>
+<body>
+	<section>
+		<aside id="left">
+			<h2>SangSang</h2>
+			<ul>
+				<li  id="home"><a href="main.html">홈</a></li>
+		<li  class="dropbox" id="intro">
+		<a href="#">회사 소개</a>
+		<span class="dropmenu">
+			<span><a href="intro.html">SangSang</a></span>
+			<span><a href="state.html">부서 현황</a></span>
+			<span><a href="location.html">회사 위치</a></span>
+		</span>
+		</li>
+		<li  id="emp_i"><a href="emp_info.html">사원 정보</a></li>
+		<li class="dropbox"  id="board">
+			<a href="#">게시판</a>
+			<span class="dropmenu">
+			<span><a href="photo_board.html">사진 게시판</a></span>
+			<span><a href="free_board.html">자유 게시판</a></span>
+			</span>
+		</li>
+			</ul>
+		</aside>
+		<aside id="center">
+			<div>
+				<button id="btn1" class="btn">부서 - 테이블</button>
+				<button id="btn2" class="btn">부서 - 그래프</button>
+				<br> <br>
+				<div id="result" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+			</div>
+		</aside>
+		<img src="img/pngfind.com-lisa-png-1438388.png" id="bg">
+	</section>
+
+</body>
+</html>
